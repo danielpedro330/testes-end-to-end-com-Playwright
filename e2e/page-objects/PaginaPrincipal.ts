@@ -1,4 +1,5 @@
 import { Page, Locator, expect } from "@playwright/test";
+import { formatarDataParaForm } from "e2e/operacoes/datas";
 
 export default class PaginaPrincipal {
   private readonly page: Page;
@@ -16,6 +17,7 @@ export default class PaginaPrincipal {
   private readonly containerOrigem: Locator;
   private readonly containerDestino: Locator;
   private readonly botaoComprar: Locator;
+  private readonly botaoDefinirPassagemExecutiva: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -31,6 +33,8 @@ export default class PaginaPrincipal {
     this.botaoIncrementarBebes = page
       .getByTestId('seletor-passageiro-bebes')
       .getByRole('button', { name: 'adição' });
+
+    this.botaoDefinirPassagemExecutiva = page.getByTestId('botao-passagem-executiva');
 
     this.botaoFecharModalPassageiros = page.getByTestId('fechar-modal-passageiros');
 
@@ -80,6 +84,10 @@ export default class PaginaPrincipal {
     }
   }
 
+  async definirPassagemExecutiva() {
+    await this.botaoDefinirPassagemExecutiva.click();
+  }
+
   async fecharModalPassageiros() {
     await this.botaoFecharModalPassageiros.click();
   }
@@ -93,7 +101,7 @@ export default class PaginaPrincipal {
   }
 
   async definirData(data: Date) {
-    const dataFormatada = data.toLocaleString('en-US', { dateStyle: 'short' });
+    const dataFormatada = formatarDataParaForm(data);
     await this.campoDataIda.fill(dataFormatada);
   }
 
