@@ -24,4 +24,4 @@ Para abrir e rodar o projeto, execute `npm i` para instalar as dependências e `
 
 Depois, acesse <a href="http://localhost:4200/">http://localhost:4200/</a> no seu navegador.
 
-Você também precisa rodar o [back-end utilizado no curso](https://github.com/viniciosneves/jornada-milhas-api).
+Você também precisa rodar o [back-end utilizado](https://github.com/viniciosneves/jornada-milhas-api).
